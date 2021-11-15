@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {BrowserRouter as Router, Routes, Route, Navigate, Link, Outlet} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route, Navigate, Link, Outlet, useParams} from 'react-router-dom'
 
 
 ReactDOM.render(
@@ -12,7 +12,9 @@ ReactDOM.render(
       {/* without replace keyword the learn page comes on top  */}
       <Route path='/learn' element={<Learn />}>
         <Route path='bundles' element={<Bundles />} />
-        <Route path='courses' element={<Courses />} />
+        <Route path='courses' element={<Courses />}>
+          <Route path=':courseid' element={<CoursesId />} />
+        </Route>
       </Route>
     </Routes>
   </Router>,
@@ -56,6 +58,16 @@ function Courses() {
     <div>
       <h1>Course List</h1>
       <h4>Course Card</h4>
+      <Outlet />
+    </div>
+  )
+}
+
+function CoursesId() {
+  const {courseid} = useParams()
+  return (
+    <div>
+      <h1>URL Params is: {courseid}</h1>
     </div>
   )
 }
