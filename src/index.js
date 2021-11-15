@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {BrowserRouter as Router, Routes, Route, Navigate, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route, Navigate, Link, Outlet} from 'react-router-dom'
 
 
 ReactDOM.render(
@@ -35,6 +35,8 @@ function Learn() {
       <Link to="/learn/courses">Courses</Link> |
       <Link to="/learn/bundles"> Bundle</Link>
       {/* Link is used over <a> tag because by using Link the page does not reloads */}
+
+      <Outlet />
     </div>
   )
 }
